@@ -1,0 +1,1603 @@
+$font-stack: "Averta", "Avenir", "Helvetica Neue", "Helvetica", "Arial",
+  "sans-serif";
+$font-fancy: "Bogart", "Avenir", "Helvetica Neue", "Helvetica", "Arial",
+  "sans-serif";
+$font-icons: "rover-icons";
+$rover-green: #00bd70;
+
+//Spacing for the individual sections
+@mixin wrapper {
+  inline-size: 90vw;
+  max-inline-size: 1142px;
+  margin: auto;
+}
+
+@mixin hero-section-style {
+  padding-block-start: 105px;
+  margin-inline-start: 20px;
+  margin-inline-end: 15px;
+}
+
+@mixin standard-section-style {
+  padding-block-start: 120px;
+}
+
+@mixin testimonial-section-style {
+  padding-block-start: 170px;
+}
+
+@mixin sitters-section-style {
+  padding-block-start: 60px;
+  margin-inline-start: 15px;
+  margin-inline-end: 15px;
+}
+
+@mixin rover-app-style {
+  padding-block-start: 65px;
+  margin-inline-start: 15px;
+  margin-inline-end: 15px;
+  text-align: center;
+}
+
+@mixin footer-style {
+  padding-block-start: 30px;
+  padding-block-end: 40px;
+  margin-inline-start: 15px;
+  margin-inline-end: 15px;
+  margin: 0;
+}
+
+@mixin blue-button-hover {
+  background-color: #2d5cb1;
+}
+
+@mixin blue-link {
+  color: #506cd1;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+//---------------------------------------
+// Set initial fonts and font properties
+//---------------------------------------
+body,
+p,
+a {
+  font-family: $font-stack;
+}
+
+h1 {
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2.23rem;
+  color: #34383f;
+  line-height: 1.4;
+}
+
+h2 {
+  font-family: $font-fancy;
+  text-align: center;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2.6rem;
+}
+
+h3,
+h4 {
+  font-family: $font-stack;
+  font-size: 1.6rem;
+  color: #000;
+}
+
+.wg-header {
+  padding: 10px;
+}
+
+.wg-footer {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  color: #0b2944;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.bloglink {
+  width: 100%;
+  background-color: rgb(60, 201, 60);
+  padding: 1px;
+  text-decoration: underline;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1rem !important;
+}
+
+.bloglink h1 {
+  color: #ffffff;
+}
+
+.bloglink p {
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.social-icons {
+  font-size: 3rem;
+}
+
+header {
+  display: grid;
+  margin: auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "top-left burger"
+    "divider divider"
+    "sub sub";
+  column-gap: 10px;
+
+  .logo::before {
+    font-family: $font-icons;
+    content: "\e96b";
+    color: $rover-green;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    margin-inline-start: 10px;
+    grid-area: top-left;
+  }
+}
+// render the burger menu icon in css - the grey square container holds the green lines
+.hamburger-1 {
+  display: flex;
+  border: 1px solid #ccc;
+  height: 35px;
+  width: 45px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+  margin-right: 15px;
+  grid-area: burger;
+  justify-content: flex-end;
+  justify-self: flex-end;
+  justify-items: end;
+}
+
+// the burger green lines
+.nav-button,
+.nav-button::before,
+.nav-button::after {
+  background-color: #04985a;
+  position: absolute;
+  height: 2px;
+  width: 23px;
+}
+
+.nav-button::before {
+  content: "";
+  margin-top: -6px;
+}
+
+.nav-button::after {
+  content: "";
+  margin-top: 6px;
+}
+
+#toggle-2 {
+  display: none;
+}
+
+//the dropdown menu has a fixed height
+#toggle-2:checked ~ .main-menu {
+  height: 270px;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #fff;
+  margin-block-start: 20px;
+  margin: 0px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  text-align: left;
+  height: 0;
+  overflow: hidden; //hides burger dropdown
+  transition: height 0.4s ease;
+  z-index: -3;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  grid-area: sub;
+}
+
+.left-menu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3px;
+  margin-right: 0;
+}
+
+.right-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding-top: 1.8rem;
+}
+
+.signup {
+  padding-top: 1.6rem;
+}
+
+.signin {
+  padding-top: 0.4rem;
+}
+
+//The title for the language menu changes at various
+//breakpoints. So the label and sub-menu nav are wrapped to control
+//the menu as a unit
+.lang-wrap {
+  position: absolute;
+  margin-block-start: 0;
+  margin-right: 30px;
+  margin-bottom: 110px;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-top: 8px;
+  height: 58px;
+  grid-area: burger;
+  justify-self: end;
+  width: 130px;
+}
+
+.lang-wrap:active,
+.lang-wrap:hover {
+  background: #eeeeee;
+}
+
+//the title text for language menu
+.lang::before {
+  content: "English (UK) ";
+  font-size: 1.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+//the down arrow
+.lang:after {
+  content: "\25BE";
+  position: relative;
+  top: 5px;
+  margin-left: -5px;
+  font-size: 2.2rem;
+}
+
+//the language submenu
+.lang-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  top: 14px;
+  left: -50px;
+  margin: 0;
+  padding: 15px;
+  list-style: none;
+  text-align: left;
+  width: 164px;
+  display: none;
+}
+
+.lang-menu a {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+#toggle-1 {
+  display: none;
+}
+
+//toggle the language sub-menu
+#toggle-1:checked ~ .lang-menu {
+  display: inline-flex;
+  background-color: #fff;
+  height: 289px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+
+// Start of the hero section
+.content {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-button {
+  background-color: #2e67d1;
+  width: 96%;
+  border-radius: 50px 50px 50px 50px;
+  border-color: transparent;
+  height: 48px;
+  color: #fff;
+  margin-block-start: 0;
+  font-weight: 600;
+}
+
+.action-button:hover {
+  @include blue-button-hover();
+}
+
+.search button {
+  background-color: #2e67d1;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  width: 300px;
+  height: 70px;
+  border: transparent;
+  border-radius: 50px 50px 50px 50px;
+  cursor: pointer;
+}
+
+.search button:hover {
+  @include blue-button-hover();
+}
+
+.formContainer {
+  max-width: 1142px;
+  margin: auto;
+  padding-top: 22px;
+}
+
+.roverForm {
+  width: 80%;
+  margin: auto;
+}
+
+.roverForm label {
+  font-size: 1.4rem;
+}
+
+.roverForm .rover-icons {
+  font-size: 1.8rem;
+}
+
+.formTitle {
+  display: flex;
+  margin-inline-start: 0;
+  padding: 15px 0 10px 30px;
+  background-color: #f4f5f6;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+// hide the checkboxes in order to create custom ones
+.formTitle input[type="checkbox"] {
+  visibility: hidden;
+}
+
+// style the dog and cat labels in form title row
+.formTitleChk {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #404347;
+  font-weight: normal;
+}
+
+// create a checkmark
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 2px solid #c9cfd4;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.formTitleChk:hover input ~ .checkmark {
+  border: 2px solid #404347;
+}
+
+.formTitleChk input:checked ~ .checkmark {
+  background-color: #404347;
+  border: 2px solid #404347;
+}
+
+/* the checkmark (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.formTitleChk input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.formTitleChk .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.formContentContainer {
+  padding: 10px 30px;
+  background-color: #fff;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.lbsRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-block-start: 10px;
+  margin-block-end: 15px;
+}
+
+.roverButton {
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: 2px solid #c9cfd4;
+  color: #62686e;
+  font-weight: 600;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  line-height: 2.5rem;
+}
+
+.formLine-1 .roverButton {
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+  height: 70px;
+  text-align: center;
+  width: 155px;
+}
+
+.formLine-2 .roverButton {
+  word-break: break-all;
+  white-space: normal;
+  width: 31%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("images/calendar-icon.png");
+  width: 30px;
+  height: 30px;
+}
+
+.formLine-2 .rover-icon-in-arrow-right {
+  font-size: 1.2rem;
+  color: #c9cfd4;
+}
+
+.arrow {
+  margin-top: 15px;
+}
+
+.formLine-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.formLine-3 .roverButton {
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+  height: 70px;
+  justify-items: center;
+  align-items: center;
+  width: 120px;
+}
+
+.roverButton:hover {
+  border: 2px solid #404347;
+  color: #1f212b;
+}
+
+.formContentContainer input[type="checkbox"]:checked ~ label {
+  border: 2px solid #404347;
+  color: #1f212b;
+}
+
+.formContentContainer input[type="checkbox"] {
+  display: none;
+}
+
+.lblAll {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.choices {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.rspca {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-block-start: 10px;
+  margin-block-end: 20px;
+}
+
+// wrapper for the services
+.content-wrap {
+  inline-size: 90vw;
+  max-inline-size: 1142px;
+  margin: auto;
+}
+
+//Services section styling
+.services {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  @include standard-section-style();
+  @include wrapper();
+}
+
+.happy-clients {
+  display: none;
+  gap: 30px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+  margin-block-end: 35px;
+
+  img {
+    width: 45vw;
+    align-items: center;
+  }
+}
+
+.services-wrap {
+  display: flex;
+  flex-direction: row;
+  // border: 1px solid red;
+  // width: 100%;
+}
+
+.service-cards {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-inline-start: 0;
+  margin-inline-end: 40px;
+  // border: 1px solid red;
+
+  h3 {
+    font-weight: normal;
+    color: #000000;
+  }
+  p {
+    color: #1f2124;
+  }
+
+  .card-details {
+    margin-inline-start: 12px;
+    // border: 1px solid red;
+  }
+
+  img {
+    margin-inline-start: 7px;
+    // border: 1px solid red;
+  }
+}
+
+.card {
+  display: flex;
+
+  img {
+    width: 50px;
+    height: fit-content;
+    // border: 1px solid red;
+  }
+
+  p {
+    margin-block-start: -12px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: #2f3235;
+    font-weight: 400;
+  }
+}
+
+.card:not(:nth-child(1)) {
+  margin-block-start: 19px;
+}
+
+.card-details {
+  margin-inline-start: 14px;
+}
+
+.services-notice {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.notice {
+  outline: 1px solid #cfd7de;
+  border-radius: 3px;
+
+  ul {
+    list-style-type: disc;
+    margin-block-start: 25px;
+    margin-inline-start: 45px;
+    margin-inline-end: 40px;
+  }
+
+  li {
+    line-height: 32px;
+  }
+
+  .action-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    margin-block-end: 20px;
+  }
+}
+
+.headingIcon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  top: -10px;
+  margin-right: 10px;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.notice-heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: #f4f5f6;
+  padding-top: 15px;
+}
+
+.notice-content-container {
+  border-top: 1px solid #cfd7de;
+  margin: auto;
+
+  li {
+    list-style: none;
+  }
+
+  li::before {
+    font-family: $font-icons;
+    content: "\e912";
+    color: #00bd70;
+    font-size: 1.3rem;
+    margin-inline-start: -20px;
+    padding-right: 10px;
+  }
+}
+
+.note {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-block-start: 20px;
+
+  a {
+    @include blue-link;
+  }
+}
+
+//Testimonials
+.testimonials {
+  @include testimonial-section-style();
+  border-bottom: 0;
+}
+
+.testimonial-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.testimonial-photo {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 370px;
+  overflow: hidden;
+}
+
+.quote-wrap {
+  position: relative;
+  width: 65%;
+  background-color: #fff;
+  border: 1px solid #cfd7de;
+  border-radius: 5px;
+  margin-inline-start: 30px;
+  margin-block-start: -110px;
+}
+
+blockquote {
+  margin-inline-start: 20px;
+  margin-inline-end: 20px;
+  margin-block-start: 23px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2124;
+}
+
+cite::before {
+  content: " - ";
+}
+
+cite {
+  font-style: normal;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #66727c;
+}
+
+//local sitters section
+
+.sitters {
+  @include sitters-section-style();
+
+  a {
+    @include blue-link;
+  }
+
+  //container for the circular numbers
+  .deco-number {
+    display: grid;
+    // grid-template-columns: 33%, 33%, 33%;
+    width: 85vw;
+    max-width: 1100px;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin-block-start: 30px;
+    margin-block-end: 30px;
+    grid-template-areas: "one two three";
+    // border: 1px solid red;
+  }
+  // put circles around the numbers
+  .num {
+    position: relative;
+    text-align: center;
+    font-size: 1.3rem;
+    height: 30px;
+    width: 30px;
+    padding: 4px;
+    border: 1px solid #cfd7de;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  /// NEEDS WORK => The lines inbetween the circular numbers
+  .numline:after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    border-bottom: 1px solid #cfd7de;
+    // min-width: 49vw;
+    width: 720px;
+    z-index: 0;
+    top: 50%;
+    left: 30px;
+  }
+
+  // .numlinewhite:after {
+  //   content: "";
+  //   position: absolute;
+  //   height: 1px;
+  //   border-bottom: 1px solid #fff;
+  //   width: 190px;
+  //   // z-index: -1;
+  //   top: 50%;
+  //   left: 30px;
+  // }
+}
+
+.sitter-cards {
+  display: flex;
+  align-items: flex-start;
+
+  .card {
+    flex-direction: column;
+    justify-content: flex-start;
+    justify-self: flex-start;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  .card-details {
+    text-align: center;
+  }
+
+  img {
+    width: 80px;
+    height: 100px;
+    padding-bottom: 20px;
+    margin: auto;
+  }
+
+  .relax img {
+    width: 70px;
+  }
+}
+
+//rover app section
+
+.roverApp {
+  @include rover-app-style();
+
+  .roverimg {
+    padding-top: 40px;
+    padding-bottom: 25px;
+  }
+
+  p {
+    font-weight: bold;
+    color: #3b3838;
+  }
+
+  .app-logo {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 175px;
+      padding: 10px;
+    }
+    padding-bottom: 30px;
+  }
+}
+
+//Locations section
+.locations-wrap {
+  @include footer-style();
+  background-color: #40484f;
+  color: #f4f5f6;
+  font-size: 1.5rem;
+
+  h2 {
+    font-family: $font-stack;
+    text-align: left;
+  }
+
+  .locations a {
+    line-height: 2.1rem;
+  }
+
+  .UK ul {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    grid-template-rows: repeat(3, max-content);
+    grid-auto-flow: column;
+    column-gap: 50px;
+  }
+
+  .ROW ul {
+    display: grid;
+    grid-template-columns: repeat(6, max-content);
+    grid-template-rows: repeat(2, max-content);
+    column-gap: 80px;
+  }
+
+  .ROW .col-list-location {
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+  }
+}
+
+//Footer
+.footer-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 5px;
+  background-color: #f4f5f6;
+  @include footer-style();
+  padding-block-end: 0;
+  .foot-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h2,
+    a {
+      line-height: 2.1rem;
+    }
+  }
+
+  .rover-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+  }
+
+  h2 {
+    font-family: $font-stack;
+    text-align: left;
+    font-size: 2rem;
+  }
+
+  ul {
+    font-size: 1.4rem;
+    color: #54595e;
+    font-weight: bold;
+  }
+
+  .about-rover ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, max-content);
+    grid-auto-flow: column;
+    justify-content: space-between;
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.8rem;
+  }
+
+  input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #cfd7de;
+    font-size: 1.4rem;
+    width: 220px;
+  }
+
+  .button {
+    background-color: #1f2124;
+    color: #f4f5f6;
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 90px;
+    padding: 8px;
+    border-radius: 20px;
+    border: #62686e;
+    margin-left: 10px;
+  }
+
+  .disclaimer {
+    color: #54595e;
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .disclaimer a {
+    text-decoration: underline;
+  }
+
+  .footnote {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  header {
+    max-width: 1142px;
+  }
+
+  .testimonials {
+    @include wrapper();
+  }
+}
+
+@media (max-width: 1199px) {
+  header {
+    max-width: 970px;
+    margin: auto;
+  }
+
+  //Testimonials
+  .testimonial-wrap {
+    max-width: 950px;
+    flex-direction: row;
+    gap: 30px;
+    margin: auto;
+  }
+
+  .testimonial-photo {
+    // display: flex;
+    // flex-direction: column;
+    height: 350px;
+    // overflow: hidden;
+  }
+
+  //Locations section
+  .locations-wrap {
+    .ROW ul {
+      column-gap: 50px;
+    }
+  }
+
+  //Footer
+  .footer {
+    .foot-wrap {
+      justify-content: space-between;
+    }
+
+    .rover-wrap {
+      justify-content: space-between;
+      width: 55%;
+    }
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1198px) {
+  .formLine-1 .roverButton {
+    width: 140px;
+  }
+
+  .formLine-3 .roverButton {
+    width: 110px;
+  }
+
+  .formLine-3 .button {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  //Testimonials
+  .testimonial-wrap {
+    max-width: 730px;
+    flex-direction: column;
+    gap: 0;
+    margin: auto;
+  }
+
+  .testimonial-photo {
+    height: 280px;
+  }
+
+  .quote-wrap {
+    width: auto;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    margin-inline-start: 0;
+    margin-block-start: 0;
+  }
+
+  //the green line decoration in testimonials
+  .deco {
+    background-color: #04985a;
+    height: 0.14rem;
+    width: 40px;
+    margin-bottom: 25px;
+  }
+
+  cite::before {
+    content: "";
+  }
+  cite {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 992px) {
+  //the title text for language menu
+  .lang::before {
+    content: "(EN) ";
+  }
+
+  header {
+    max-width: 770px;
+  }
+
+  //hide the services menu item
+  .item-services {
+    display: none;
+  }
+
+  //Form
+  .formLine-1 .roverButton {
+    width: 110px;
+    height: 90px;
+  }
+
+  .formLine-3 .roverButton {
+    width: 110px;
+  }
+
+  .formLine-3 .searchOptions {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .formLine-3 .roverButton {
+    width: 135px;
+    justify-content: center;
+  }
+
+  .formLine-3 .search {
+    margin-top: 10px;
+  }
+
+  //Testimonials
+  cite::before {
+    content: " - ";
+  }
+
+  cite {
+    font-size: 2.6rem;
+    font-weight: bold;
+  }
+
+  .quote-wrap {
+    border: 1px solid #cfd7de;
+  }
+
+  //Locations section
+  .locations-wrap {
+    .UK ul {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      grid-template-rows: repeat(4, max-content);
+      grid-auto-flow: column;
+      column-gap: 50px;
+    }
+
+    .ROW ul {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      grid-template-rows: repeat(3, max-content);
+      column-gap: 90px;
+    }
+  }
+
+  //Footer
+  .footer {
+    .foot-wrap {
+      flex-direction: column;
+    }
+
+    .rover-wrap {
+      flex-direction: row;
+      width: 75%;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 3rem;
+    }
+
+    .social-icons {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .footnote {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  //hide burger icon
+  .hamburger-1 {
+    display: none;
+  }
+
+  //redefine header grid for widescreen menu placement
+  header {
+    display: grid;
+    grid-template-columns: 140px 1fr 150px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "top-left middle burger";
+  }
+
+  //"close" the sub-menu if the window is made bigger
+  //while the hamburger is active
+  #toggle-2:checked ~ .main-menu {
+    height: fit-content;
+  }
+
+  //format the menu for widescreen display
+  .main-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: center;
+    margin-block-start: 20px;
+    margin: 15px;
+    height: fit-content;
+    transition: none;
+    z-index: auto;
+    -webkit-transition: none;
+    transition: none;
+    padding-top: 0;
+    grid-area: middle;
+  }
+
+  .main-menu a,
+  i {
+    font-size: 1.4rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-left: 10px;
+    color: #404347;
+  }
+
+  .left-menu {
+    flex-direction: row;
+  }
+
+  .right-menu {
+    flex-direction: row;
+    vertical-align: top;
+  }
+
+  .menu-icons,
+  .item {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .signup,
+  .signin {
+    padding-top: 0.2rem;
+  }
+
+  //set the hero display for wide screens
+  .title::before {
+    content: "Loving Pet Care in Your Neighbourhood™";
+    font-family: "Bogart", "Avenir", "Helvetica Neue", "Helvetica", "Arial";
+    font-size: 4rem;
+    color: #fff;
+  }
+
+  .subtitle::before {
+    content: "Book trusted sitters and dog walkers.";
+    font-size: 3.1rem;
+    color: #fff;
+  }
+
+  .hero {
+    background-image: url(images/hero.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  .hero-title-wrap {
+    inline-size: 80vw;
+    margin: auto;
+    margin-block-start: 100px;
+    line-height: 0;
+  }
+
+  .hero .action-button {
+    display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .main-menu {
+    border-top: 1px solid #cfd7de;
+    border-bottom: 1px solid #cfd7de;
+  }
+
+  .main-menu a,
+  i {
+    font-size: 1.4rem;
+    margin-left: 10px;
+    padding-bottom: 15px;
+  }
+
+  .lang-wrap {
+    margin-block-start: 8px;
+    margin-right: 60px;
+    padding-right: 5px;
+    padding-top: 0;
+    height: 40px;
+    width: 120px;
+  }
+
+  .lang-wrap:active {
+    border: 1px solid #eeeeee;
+  }
+
+  //the language submenu
+  .lang-menu {
+    top: 4px;
+    left: -60px;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .title::before {
+    content: "Book trusted, local pet sitters and walkers who will care for your dog or cat like you would. ";
+  }
+
+  .formContainer {
+    display: none;
+  }
+
+  .hero {
+    @include hero-section-style();
+    // padding-block-start: 105px;
+  }
+
+  .hero .action-button {
+    margin-top: 10px;
+  }
+
+  //Services section
+  .services-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-cards {
+    width: 100%;
+  }
+
+  .services-notice {
+    width: 100%;
+  }
+
+  .happy-clients {
+    display: flex;
+  }
+
+  .card img {
+    width: 38px;
+    height: fit-content;
+  }
+
+  .notice {
+    margin-block-start: 12px;
+  }
+
+  //Testimonials
+  .testimonials {
+    border-bottom: 1px solid #cfd7de;
+
+    .quote-wrap {
+      margin: 20px;
+    }
+
+    blockquote {
+      font-size: 2.2rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    cite {
+      color: #000;
+    }
+  }
+
+  //Sitters
+  .deco-number {
+    display: none;
+  }
+
+  .sitters {
+    padding-block-start: 35px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+
+    h2 {
+      margin-inline-start: -5px;
+    }
+  }
+
+  .sitter-cards {
+    flex-direction: column;
+    margin-block-start: -60px;
+
+    .card {
+      flex-direction: row;
+    }
+
+    .card-details {
+      text-align: left;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      padding-bottom: 0;
+      margin: 0;
+    }
+
+    .relax img {
+      width: 50px;
+    }
+  }
+
+  .deco-number {
+    visibility: hidden;
+  }
+
+  //Rover App
+  .roverApp {
+    .roverimg {
+      display: none;
+    }
+
+    p {
+      padding-top: 35px;
+    }
+
+    .app-logo {
+      flex-direction: column;
+
+      img {
+        margin: auto;
+      }
+      padding-bottom: 30px;
+    }
+  }
+
+  //Locations section
+  .locations-wrap {
+    .UK ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 180px));
+      grid-template-rows: repeat(6, max-content);
+    }
+
+    .ROW ul {
+      grid-template-columns: repeat(2, minmax(120px, 180px));
+      grid-template-rows: repeat(6, max-content);
+    }
+
+    .ROW .col-list-location {
+      flex-wrap: wrap;
+    }
+
+    .globe {
+      margin: auto;
+    }
+  }
+
+  //Footer
+  .footer {
+    .foot-wrap {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .rover-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .learn-more ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 300px));
+      grid-template-rows: repeat(1, auto);
+      grid-auto-flow: row;
+      justify-content: space-between;
+    }
+
+    .about-rover ul {
+      grid-template-columns: repeat(2, minmax(200px, 300px));
+      grid-template-rows: repeat(5, max-content);
+      justify-content: space-between;
+    }
+
+    .need-help {
+      display: none;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 3rem;
+    }
+
+    .disclaimer {
+      font-style: italic;
+    }
+
+    .social-icons {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 2px;
+    }
+
+    .footnote {
+      text-align: center;
+      margin: auto;
+      line-height: 2.4rem;
+    }
+
+    #line2::before {
+      content: "\a";
+      white-space: pre;
+    }
+  }
+}

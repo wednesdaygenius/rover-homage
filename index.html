@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rover Homage: Book Dog Boarding, Dog Walking and More</title>
+    <link rel="stylesheet" href="generics.css" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="rover-icons.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico?v=3" />
+    <link
+      rel="preload"
+      href="fonts/Averta-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/Averta-Semibold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/Bogart-Semibold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="fonts/rover-icons.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="fonts/8abd0881be3fef1900293d2dccf7d22f.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+
+  <body>
+    <div class="wg-header">
+      <a href="https://wednesdaygenius.com">
+        <img class="wg-logo" src="logo.jpg" alt="Wednesday Genius" />
+      </a>
+    </div>
+
+    <div class="bloglink">
+      <h1>
+        <a href="https://wednesdaygenius.com/code-playground/rover-homage/"
+          >This is a homage to Rover.com - Click here to read about the
+          development of this page</a
+        >
+      </h1>
+    </div>
+
+    <header>
+      <a class="logo" href=""></a>
+      <div class="lang-wrap">
+        <input id="toggle-1" type="checkbox" />
+        <label class="lang-chk" for="toggle-1">
+          <span class="lang"></span>
+        </label>
+        <nav class="lang-menu">
+          <a href="" class="english">English (UK)</a>
+          <a href="">Deutsch</a>
+          <a href="">Español</a>
+          <a href="">Français</a>
+          <a href="">Italiano</a>
+          <a href="">Nederlands</a>
+          <a href="">Norsk</a>
+          <a href="">Svenska</a>
+        </nav>
+      </div>
+      <input id="toggle-2" type="checkbox" />
+      <label class="hamburger-1" for="toggle-2">
+        <span class="nav-button burger"></span>
+      </label>
+
+      <!-- the main menu appears differently at various breakpoints.
+      The HTML has been structured to help with placement.
+      The menu items with an icon have a wrapper around them to 
+      control them as a unit -->
+      <div class="main-menu">
+        <div class="left-menu">
+          <span class="item">
+            <i class="menu-icons rover-icon-in-search"></i
+            ><a href="">Search Sitters</a>
+          </span>
+
+          <span class="item become">
+            <i class="menu-icons rover-icon-in-heart"></i
+            ><a href="" target="_blank">Become a Sitter</a>
+          </span>
+
+          <span class="item item-services">
+            <i class="menu-icons rover-icon-in-paw"></i
+            ><a href="">Our Services</a>
+          </span>
+        </div>
+        <div class="right-menu">
+          <a class="signup" href="">Sign Up</a>
+          <a class="signin" href="">Sign In</a>
+          <span class="item">
+            <i class="menu-icons rover-icon-in-question-circle"></i
+            ><a href="">Help</a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="hero">
+        <div class="hero-title-wrap">
+          <!-- headings are filled dynamically -->
+          <h1>
+            <span class="title"></span>
+          </h1>
+          <h2><span class="subtitle"></span></h2>
+        </div>
+
+        <button class="action-button">Discover local sitters</button>
+
+        <!-- container to position the form in line with main content -->
+        <div class="formContainer">
+          <!-- name of the form -->
+          <form
+            class="roverForm"
+            method="POST"
+            action="https://form-reader.netlify.app/.netlify/functions/formReader"
+          >
+            <!-- the title row which holds the Dog/Cat filter -->
+            <div class="formTitle">
+              <label> I'm looking for a service for my: </label>
+              <label class="formTitleChk" for="dog">
+                Dog
+                <input
+                  type="checkbox"
+                  checked="checked"
+                  id="dog"
+                  name="dog"
+                  value="Dog"
+                />
+                <span class="checkmark"></span>
+              </label>
+              <label class="formTitleChk" for="cat">
+                Cat
+                <input type="checkbox" id="cat" name="cat" value="Cat" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+            <!-- the main form that holds all the other selection criteria -->
+            <div class="formContentContainer">
+              <div class="formLine-1">
+                <div class="lbsRow">
+                  <div class="lblAll">For When You're Away</div>
+                  <div class="lblAll">For When You're at Work</div>
+                </div>
+
+                <div class="searchOptions">
+                  <div class="formOptions titleGroup">
+                    <input
+                      type="checkbox"
+                      checked="checked"
+                      id="boarding"
+                      name="boarding"
+                    />
+                    <label for="boarding" class="roverButton btnLine-1"
+                      ><span
+                        class="rover-icons rover-icon-boarding_flat"
+                      ></span>
+                      Boarding</label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input
+                      type="checkbox"
+                      id="house-sitting"
+                      name="house-sitting"
+                    />
+                    <label for="house-sitting" class="roverButton btnLine-1"
+                      ><span
+                        class="rover-icons rover-icon-house_sitting_flat"
+                      ></span
+                      >House Sitting</label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input type="checkbox" id="drop-in" name="drop-in" />
+                    <label for="drop-in" class="roverButton btnLine-1"
+                      ><span class="rover-icons rover-icon-homevists"></span
+                      >Drop-In Visits</label
+                    >
+                  </div>
+                  <div class="formOptions title-group">
+                    <input type="checkbox" id="daycare" name="daycare" />
+                    <label for="daycare" class="roverButton btnLine-1"
+                      ><span class="rover-icons rover-icon-daycare"></span>Doggy
+                      Day Care</label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input type="checkbox" id="dogwalking" name="dogwalking" />
+                    <label for="dogwalking" class="roverButton btnLine-1"
+                      ><span class="rover-icons rover-icon-walking"></span>Dog
+                      Walking</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- second row for address and dates -->
+              <div class="formLine-2">
+                <div class="lbsRow">
+                  <div class="lblAll">Boarding near</div>
+                  <div class="lblAll">For these days</div>
+                </div>
+                <div class="searchOptions">
+                  <input
+                    class="roverButton btnLine-2"
+                    type="text"
+                    id="postcode"
+                    name="postcode"
+                    placeholder="Postcode or Address"
+                  />
+                  <input
+                    class="roverButton btnLine-2 drop-off"
+                    type="date"
+                    id="drop-off"
+                    name="drop-off"
+                  />
+                  <div class="arrow">
+                    <i class="rover-icons rover-icon-in-arrow-right"></i>
+                  </div>
+
+                  <input
+                    class="roverButton btnLine-2 pickup"
+                    type="date"
+                    id="pick-up"
+                    name="pick-up"
+                  />
+                </div>
+              </div>
+
+              <!-- third row for dog size and search button -->
+              <div class="lbsRow">
+                <div class="lblAll">My Dog's Size</div>
+              </div>
+
+              <div class="formLine-3">
+                <div class="searchOptions">
+                  <div class="formOptions">
+                    <input type="checkbox" id="small" name="small" />
+                    <label for="small" class="roverButton btnLine-3"
+                      ><span>Small</span> <span>0-7 kg</span></label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input type="checkbox" id="medium" name="medium" />
+                    <label for="medium" class="roverButton btnLine-3"
+                      ><span>Medium</span> <span>7-18 kg</span></label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input type="checkbox" id="large" name="large" />
+                    <label for="large" class="roverButton btnLine-3"
+                      ><span>Large</span> <span>18-45 kg</span></label
+                    >
+                  </div>
+                  <div class="formOptions">
+                    <input type="checkbox" id="giant" name="giant" />
+                    <label for="giant" class="roverButton btnLine-3"
+                      ><span>Giant</span> <span>45+ kg</span></label
+                    >
+                  </div>
+                  <div class="search">
+                    <button class="button" type="button">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="rspca">
+            <img
+              src="images/rspca-logo.dc2c81b0b4f9.png"
+              width="75"
+              alt="RSPCA"
+            />
+            We proudly contribute £1 to the RSPCA when you make your first
+            booking.*
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="services">
+      <h2>Services for every dog and cat</h2>
+      <div class="happy-clients">
+        <img
+          alt="A smiling lady cuddling a happy dog."
+          src="images/services-photo-1@2x.jpg"
+          srcset="
+            images/services-photo-1@2x.jpg 1.5x,
+            images/services-photo-1@2x.jpg 2x
+          "
+        />
+        <img
+          alt="A lady kissing a ginger cat."
+          src="images/services-photo-2@2x.jpg"
+          srcset="
+            images/services-photo-2@2x.jpg 1.5x,
+            images/services-photo-2@2x.jpg 2x
+          "
+        />
+      </div>
+      <div class="services-wrap">
+        <div class="service-cards">
+          <div class="card boarding">
+            <img
+              class="icon boarding"
+              src="images/boarding.png"
+              alt="Boarding"
+            />
+            <div class="card-details">
+              <h3>Boarding</h3>
+              <p>
+                Your pets stay overnight in your sitter's home. They'll be
+                treated like part of the family in a comfortable environment.
+              </p>
+            </div>
+          </div>
+          <div class="card house-sitting">
+            <img
+              class="icon house-sitting"
+              src="images/house-sitting.png"
+              alt="House sitting"
+            />
+            <div class="card-details">
+              <h3>House Sitting</h3>
+              <p>
+                Your sitter takes care of your pets and your home. Your pets
+                will get all the attention they need without leaving home.
+              </p>
+            </div>
+          </div>
+          <div class="card dog-walking">
+            <img
+              class="icon dog-walking"
+              src="images/dog-walking.png"
+              alt="Dog walking"
+            />
+            <div class="card-details">
+              <h3>Dog Walking</h3>
+              <p>
+                Your dog gets a walk around your local area. Perfect for busy
+                days and dogs with extra energy to burn.
+              </p>
+            </div>
+          </div>
+          <div class="card daycare">
+            <img
+              class="icon daycare"
+              src="images/doggy-day-care.png"
+              alt="Day care"
+            />
+            <div class="card-details">
+              <h3>Doggy Day Care</h3>
+              <p>
+                Your dog spends the day at your sitter's home. Drop them off in
+                the morning and pick up a happy pup in the evening.
+              </p>
+            </div>
+          </div>
+          <div class="card dropin">
+            <img
+              class="icon dropin"
+              src="images/drop-in-visits.png"
+              alt="Drop-In Visits"
+            />
+            <div class="card-details">
+              <h3>Drop-In Visits</h3>
+              <p>
+                Your sitter drops by your home to play with your pets, offer
+                food, and give Potty Breaks or clean the litter box.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="services-notice">
+          <div class="notice">
+            <div class="notice-heading-container">
+              <img
+                class="headingIcon"
+                src="images/trust-png.webp"
+                alt="Trust Rover"
+              />
+              <h4>Book with pet sitters you can trust</h4>
+              <!-- </div> -->
+            </div>
+            <div class="notice-content-container">
+              <ul>
+                <li>All sitters pass an identity verification check.</li>
+                <li>
+                  All sitters provide a detailed profile and personal
+                  information
+                </li>
+                <li>
+                  All sitters are approved by our team of sitter specialists
+                </li>
+              </ul>
+              <div>
+                <button class="action-button">Book a local sitter</button>
+              </div>
+            </div>
+          </div>
+          <div class="note">
+            All services booked on Rover are backed by the
+            <a href="">Rover Guarantee</a>, <a href="">24/7 support</a>, and
+            <a href="">reservation protection</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials section (written as a div because no H1 required) -->
+    <div class="testimonials">
+      <div class="testimonial-wrap">
+        <div class="testimonial-1">
+          <div class="testimonial-photo">
+            <img
+              alt="A smiling lady with a dog."
+              src="images/woman-with-dog.webp"
+              srcset="
+                images/woman-with-dog.webp 1.5x,
+                images/woman-with-dog.webp 2x
+              "
+            />
+          </div>
+          <div class="quote-wrap">
+            <div class="testimonial-text">
+              <blockquote>
+                <div class="deco"></div>
+                I was nervous to leave Sam with strangers, but my worries
+                quickly faded. Going forward Rover will be my first choice for
+                pet sitting. <cite>Molly S.</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-2">
+          <div class="testimonial-photo">
+            <img
+              alt="A smiling lady with a cat."
+              src="images/woman-with-cat.webp"
+              srcset="
+                images/woman-with-cat.webp 1.5x,
+                images/woman-with-cat.webp 2x
+              "
+            />
+          </div>
+          <div class="quote-wrap">
+            <div class="testimonial-text">
+              <blockquote>
+                <div class="deco"></div>
+                My sitter took great care of my cat, above and beyond my
+                expectations. I would book with Rover again in a heartbeat!
+                <cite>Danielle H.</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrap">
+      <section class="sitters">
+        <h2>Meet local sitters who will treat your pets like family</h2>
+
+        <div class="deco-number">
+          <div class="num numline">1</div>
+          <div class="num">2</div>
+          <div class="num numlinewhite">3</div>
+        </div>
+
+        <div class="sitter-cards">
+          <div class="card search">
+            <img
+              class="icon sitter-icon search"
+              src="images/search-png.webp"
+              alt="Search"
+            />
+            <div class="card-details">
+              <h3>Search</h3>
+              <p>
+                Read verified reviews by pet parents like you and choose a
+                sitter who’s a great match for you and your pets.
+              </p>
+            </div>
+          </div>
+          <div class="card book">
+            <img
+              class="icon sitter-icon book"
+              src="images/book-and-pay-png.webp"
+              alt="Book &amp; pay"
+            />
+
+            <div class="card-details">
+              <h3>Book &amp; pay</h3>
+              <p>
+                No cash or cheques needed—we make it simple to book and make
+                secured payments through our website or app.
+              </p>
+            </div>
+          </div>
+          <div class="card relax">
+            <img class="icon" src="images/relax-png.webp" alt="Relax" />
+            <div class="card-details">
+              <h3>Relax</h3>
+              <p>
+                Your pets are in great hands with a loving sitter. Plus, your
+                booking is backed by
+                <a href="">24/7 support</a>
+                and the
+                <a href="">Rover Guarantee</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="roverApp">
+        <h2>Connect anywhere with the Rover app</h2>
+        <div class="roverimg">
+          <img
+            src="images/app-showcase-en-gb@1x.9fcc083708f1.png"
+            alt="Rover app"
+          />
+        </div>
+        <div class="appImg-deco"></div>
+        <p>Available on iOS and Android</p>
+        <div class="app-logo">
+          <img src="images/app-store-ios.svg" alt="Download on the App Store" />
+          <img src="images/google-play.svg" alt="Get it on Google Play" />
+        </div>
+      </section>
+    </div>
+
+    <div class="locations-wrap">
+      <div class="content-wrap">
+        <section class="locations foot">
+          <div class="UK">
+            <h2>Thousands of pet sitters across the United Kingdom 🇬🇧</h2>
+            <div class="col-list-location">
+              <ul>
+                <li><a href="">East Midlands</a></li>
+                <li><a href="">East of England</a></li>
+                <li><a href="">Greater London</a></li>
+                <li><a href="">North East England</a></li>
+                <li><a href="">North West England</a></li>
+                <li><a href="">Northern Ireland</a></li>
+                <li><a href="">Scotland</a></li>
+                <li><a href="">South East England</a></li>
+                <li><a href="">South West England</a></li>
+                <li><a href="">Wales</a></li>
+                <li><a href="">West Midlands</a></li>
+                <li><a href="">Yorkshire and the Humber</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="ROW">
+            <h2>Trusted around the world</h2>
+            <div class="col-list-location">
+              <ul>
+                <li><a href="">United States</a></li>
+                <li><a href="">Germany</a></li>
+                <li><a href="">France</a></li>
+                <li><a href="">Netherlands</a></li>
+                <li><a href="">Sweden</a></li>
+                <li><a href="">Canada</a></li>
+                <li><a href="">Spain</a></li>
+                <li><a href="">Italy</a></li>
+                <li><a href="">Norway</a></li>
+              </ul>
+
+              <img class="globe" src="images/globe_doodle.svg" alt="Globe" />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="footer-wrap">
+      <div class="content-wrap">
+        <footer class="footer foot">
+          <div class="foot-wrap">
+            <div class="rover-wrap">
+              <div class="learn-more">
+                <h2>Learn More</h2>
+                <div class="col-list footlist">
+                  <ul>
+                    <li><a href="">Read Our Blog</a></li>
+                    <li><a href="">Rover Guarantee</a></li>
+                    <li><a href="">Safety</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="about-rover">
+                <h2>About Rover</h2>
+                <div class="col-list footlist">
+                  <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">Accessibility</a></li>
+                    <li><a href="">Get the App</a></li>
+                    <li><a href="">Press</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Privacy Statement</a></li>
+                    <li><a href="">Cookie Policy</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="need-help">
+                <h2>Need Help?</h2>
+                <div class="col-list footlist">
+                  <ul>
+                    <li><a href="">Help Centre</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="socials">
+              <h2>Get cute puppies in your inbox</h2>
+
+              <form
+                method="POST"
+                action="https://form-reader.netlify.app/.netlify/functions/formReader"
+              >
+                <div class="form-details">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                  />
+
+                  <button class="button" type="Submit">Submit</button>
+                </div>
+                <div class="disclaimer">
+                  By providing my email address, I consent to receive
+                  marketing<br />
+                  communications from Rover.com and its affiliates.<br /><a
+                    href=""
+                    >Privacy Policy</a
+                  >
+                </div>
+              </form>
+              <div class="social-icons">
+                <a href=""
+                  ><i
+                    class="social-icons rover-icon-facebook-footer"
+                    style="color: #3b5998"
+                  ></i></a
+                ><a href=""
+                  ><i
+                    class="social-icons rover-icon-instagram-footer"
+                    style="color: #8a3ab9"
+                  ></i></a
+                ><a href=""
+                  ><i
+                    class="social-icons rover-icon-twitter-footer"
+                    style="color: #1da9f3"
+                  ></i></a
+                ><a href=""
+                  ><i
+                    class="social-icons rover-icon-pinterest-footer"
+                    style="color: #c8232c"
+                  ></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="footnote">
+            <p>
+              &copy; 2022 A Place for Rover, Inc. All Rights Reserved.
+              <span id="line2">
+                711 Capitol Way S., Suite 204, Olympia, WA 98501
+              </span>
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="bloglink">
+      <p>
+        <a href="https://wednesdaygenius.com/code-playground/rover-homage/"
+          >This page has been a homage to Rover.com - Click here to read about
+          the development of this page</a
+        >
+      </p>
+    </div>
+    <div class="wg-footer">
+      Copyright © 2023 · Jessica Barnaby / Wednesday Genius ·
+      hello@wednesdaygenius.com
+    </div>
+  </body>
+</html>
